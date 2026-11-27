@@ -1,0 +1,330 @@
+{
+  "source_revision": "3416ce4da39e3b4bc923f9e67c8aa9c03250b239",
+  "exported_at": "2026-11-27T13:52:16+09:00",
+  "manifest_sha256": "f4cd32d64e1b7a18b1ffbc1ce56f5ac63547f201fa134a046e7a0609ef71f33f",
+  "stage": 1,
+  "file_count": 51,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "mode": "edition",
+      "sha256": "adc90e14f3b28f029d0776b0728c88e6955125d4a8f8f78c648938b35763dc42",
+      "bytes": 7511
+    },
+    {
+      "path": "CONCEPTS.md",
+      "mode": "copy",
+      "sha256": "9262f375e2f09524e4a90faacd3bd4fc56b03383fceb0637a218db6afc4e9230",
+      "bytes": 1199
+    },
+    {
+      "path": "LICENSE",
+      "mode": "edition",
+      "sha256": "dff58ad0a96bc6a94bda5a129336e95705f3f9fccc51c92c5f9fcbd4a5fe9ffb",
+      "bytes": 1078
+    },
+    {
+      "path": "LICENSE-docs",
+      "mode": "edition",
+      "sha256": "b6e727c6e193845b3c1e457e995764e39fc90685bfe84a13edb8acf8d918c36a",
+      "bytes": 1536
+    },
+    {
+      "path": "README.md",
+      "mode": "edition",
+      "sha256": "2d555af2fdcf29791e271a7dc5a3e647991c255e68de11041c012965a60bb6eb",
+      "bytes": 14469
+    },
+    {
+      "path": "docs/methods/book-config.md",
+      "mode": "edition",
+      "sha256": "bf20616aab22916672ab74815c4c9c478976b9cece19708331e00e0de2bcfbf4",
+      "bytes": 8426
+    },
+    {
+      "path": "docs/methods/database-import.md",
+      "mode": "edition",
+      "sha256": "122d92880f899516be078814136ab8729d825507eb915961619c8b221d90dfd3",
+      "bytes": 7885
+    },
+    {
+      "path": "docs/methods/editorial-review.md",
+      "mode": "edition",
+      "sha256": "69584a51d5cdf76f74118c0ba1ec88b153f9cfc86520535bdc4c633b3afd9bcd",
+      "bytes": 8413
+    },
+    {
+      "path": "docs/methods/finding-a-clan-branch-jokbo.md",
+      "mode": "edition",
+      "sha256": "d4e8f953734ca6d4ca977b0d336edf9649c6b91779045579614be0c4621b9050",
+      "bytes": 1528
+    },
+    {
+      "path": "docs/methods/finding-archive-household-records.md",
+      "mode": "edition",
+      "sha256": "242718a7247c0e3dfa54b3f0717345f14feebcdb46006b5394d397632286e2ee",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/methods/layout-format.md",
+      "mode": "edition",
+      "sha256": "09e6c4cd496a8e505e1d0d5686691ed575dc8081647dfb8add4d46be884682c6",
+      "bytes": 5819
+    },
+    {
+      "path": "docs/methods/rendering-and-fonts.md",
+      "mode": "edition",
+      "sha256": "7e491014b9f3ac459ea8887f4bc8c52a8f2cdde0f54de99101ff7eb22bbce534",
+      "bytes": 6630
+    },
+    {
+      "path": "docs/methods/transcription-and-glyph-review.md",
+      "mode": "edition",
+      "sha256": "b8ced74124b1b5fdb73651a8749ee3f1bcac2ed1eff31bfc771bfc44901367d0",
+      "bytes": 9165
+    },
+    {
+      "path": "docs/methods/whole-book-proofing.md",
+      "mode": "edition",
+      "sha256": "97325b9f7a32cde9848a5f39abb78217cf1c20147d37e530c49267786a6dcd3e",
+      "bytes": 4418
+    },
+    {
+      "path": "docs/solutions/workflow-issues/find-a-clan-branch-jokbo-in-library-catalogs.md",
+      "mode": "copy",
+      "sha256": "0d963c01e67ba2f24dc44319b21abf2ab54b2d949aaa68de58a80f6c1a5079a1",
+      "bytes": 4387
+    },
+    {
+      "path": "docs/solutions/workflow-issues/find-full-hojok-images-and-transcripts-from-catalog.md",
+      "mode": "copy",
+      "sha256": "fa3a2e45d1182d87ecd9bd1af52bc6d601aa4a5f781f474398188b0fb8f2172a",
+      "bytes": 5584
+    },
+    {
+      "path": "journal/README.md",
+      "mode": "edition",
+      "sha256": "b1cf38f65dcb9eeb316475c11a2f99b677c82e0027baf312869796095b4f177c",
+      "bytes": 21192
+    },
+    {
+      "path": "journal/costs-and-models.md",
+      "mode": "edition",
+      "sha256": "459dbdba24c99dac4d6ddb1014ffd769cded49c7b56db8dc44e03a6392529f12",
+      "bytes": 10364
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131401-misplaced-crops-mislead-every-reader.md",
+      "mode": "edition",
+      "sha256": "8f89bc6db7a8d6c69ae91db435d993ea6eaf893fd3ad1f45dd597da99399f5d0",
+      "bytes": 3892
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131402-font-order-and-font-embedding.md",
+      "mode": "edition",
+      "sha256": "9cbe97ed356cba712f9decd6711d3c80d9c0f22fefaae3563ad01a71ce653aec",
+      "bytes": 3099
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131403-provider-failures-and-fallbacks.md",
+      "mode": "edition",
+      "sha256": "48f6eb34d4f51ffa0f8bf8780477c5dd09edb8a4fc33f8336ffd9873f91e415d",
+      "bytes": 3485
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131404-source-matched-text-is-not-a-person.md",
+      "mode": "edition",
+      "sha256": "5bd61d98862068f2454e3a241f26ea41c9b3e937179075c6cff33cdd0b652083",
+      "bytes": 4545
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131405-whole-page-passes-miss-silently.md",
+      "mode": "edition",
+      "sha256": "0818f078f65fee90a136bf96b01c2c5e69f9c2330633101ca4ceafcf7010e4af",
+      "bytes": 2902
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131406-multi-image-prompts-swap-crop-ids.md",
+      "mode": "edition",
+      "sha256": "7485bdb29fe5e6d9070d472863216b497531f548c4cfe9119eb225e05800870e",
+      "bytes": 1491
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131407-small-strokes-circles-and-digits-drop-out.md",
+      "mode": "edition",
+      "sha256": "13330ed8197b9d169366df76291b939c9ac8c99fbf539faaca18e5aa09fdb218",
+      "bytes": 4118
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131408-variant-and-circle-rules.md",
+      "mode": "edition",
+      "sha256": "264c3ac6a758ff8c19ed0a94076ddb83e6b70777007432646269e10b913f93b1",
+      "bytes": 3345
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131409-models-invent-explanations.md",
+      "mode": "edition",
+      "sha256": "256091d27c293b0668f3bce7f6ed9b8aae5cb8cb7ef098f542dd0658378289f3",
+      "bytes": 1684
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131410-pdf-double-text-layer.md",
+      "mode": "edition",
+      "sha256": "d427b06ed020a116449f47a44d770d1e576c916f0f7cf163ddcded972ed17e15",
+      "bytes": 1831
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131411-whole-book-proofing-and-duplicate-runs.md",
+      "mode": "edition",
+      "sha256": "1c46c7d57f5556eccc55ca35a1de4aa2dc9c52b2bb631969712bda4faebbb2bf",
+      "bytes": 2886
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131412-renderer-measuring-window.md",
+      "mode": "edition",
+      "sha256": "95d05ee65497a92403fa5f33e74804453ddda97a19993d5b1a4107e78d645331",
+      "bytes": 2007
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131413-grouping-trial-crash-and-skipped-pages.md",
+      "mode": "edition",
+      "sha256": "738ede2119645c59671063fd82d0c3eae378c9c8d56d56b5da718de97e11f8aa",
+      "bytes": 2057
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131414-two-page-numbering-systems.md",
+      "mode": "edition",
+      "sha256": "8d0d6b63f4ce75cdc00f449adaf8c4712e0fb388496dbd702b05941f181ccf4a",
+      "bytes": 1290
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131415-testing-the-reference-and-the-evaluator.md",
+      "mode": "edition",
+      "sha256": "a8633126da41b4489d8076291feee3cdae7595b67914de5056d90a6b255b0c04",
+      "bytes": 2850
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131416-code-review-scope.md",
+      "mode": "edition",
+      "sha256": "aabbf3b29f4856a98f72585f0af1d4760679ddb18d8a32341e19189e530fc8d3",
+      "bytes": 1521
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131417-reader-person-id-scope.md",
+      "mode": "edition",
+      "sha256": "5e09534bcca34b23951730b9f55c88025c378c2a6744d7c905000f1a8a0ad5e7",
+      "bytes": 2015
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131418-what-was-never-recorded.md",
+      "mode": "edition",
+      "sha256": "a76783774b267377801114ba2334a1cf6cd73e7970703685206307b6eba33a60",
+      "bytes": 3976
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131419-archive-thumbnails.md",
+      "mode": "edition",
+      "sha256": "1145099bf0f6c1ce7c8c8e567332572f06b386cf3d4f72f7de00a784d70d2724",
+      "bytes": 2268
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131420-text-to-speech-pronunciation.md",
+      "mode": "edition",
+      "sha256": "346ba1d8ae208d2af5e67afe6882df9be6989aaa24919d8352695203e761b1b1",
+      "bytes": 1643
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131421-video-pipeline-hard-coded-paths.md",
+      "mode": "edition",
+      "sha256": "e24622939d0f65ea63dcfc8cfcba42c5271ab3df5e22e9f7838182b5804e35a7",
+      "bytes": 2046
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131422-the-physical-book-settles-what-scans-cannot.md",
+      "mode": "edition",
+      "sha256": "99a5416e503d383f0c2f885ff0ded08a080a9d8b3317833d9c7293fac0d9259b",
+      "bytes": 3500
+    },
+    {
+      "path": "journal/lessons/2026-11-27-131423-publishing-without-leaking.md",
+      "mode": "edition",
+      "sha256": "38d0c3090db505b4f6db707f9b2d6c8183faa34dc7e83c2e42128ab0c59d6df5",
+      "bytes": 6599
+    },
+    {
+      "path": "research/hojok-samples/imsil-1792-park-seong-hyeop.jpg",
+      "mode": "copy",
+      "sha256": "d9d443963f8f717bdb7b3cbf0fecca8f9a9c7c70dfe32f33d4015098a63e6e79",
+      "bytes": 1088267,
+      "class": "public-source",
+      "source_url": "https://kostma.aks.ac.kr/inspection/insDirView.aspx?dataUCI=KCIS_U038%2BCBNHNKSMC%2BKSM-XD.1792.4575-20140430.ISPTS00001",
+      "metadata_stripped": true
+    },
+    {
+      "path": "research/hojok-samples/imsil-1792-park-seong-hyeop.txt",
+      "mode": "copy",
+      "sha256": "12a20039bde903454b9aa32cfe1e82eb784c594de6949837fe18ef9984928133",
+      "bytes": 772
+    },
+    {
+      "path": "research/hojok-samples/imsil-1831-park-si-un.jpg",
+      "mode": "copy",
+      "sha256": "3f2cbba2d1c274f5f39e8108ee040649c357abc05f28b8a8496cbffcc8e05c0c",
+      "bytes": 1025380,
+      "class": "public-source",
+      "source_url": "https://kostma.aks.ac.kr/inspection/insDirView.aspx?dataUCI=KCIS_U038%2BCBNHNKSMC%2BKSM-XD.1831.4575-20140430.ISPTS00002",
+      "metadata_stripped": true
+    },
+    {
+      "path": "research/hojok-samples/imsil-1831-park-si-un.txt",
+      "mode": "copy",
+      "sha256": "b4ae491c149b010696d637a7f9cb56e70ab8e391e1fb572d6b660af9eb61de96",
+      "bytes": 440
+    },
+    {
+      "path": "research/hojok-samples/imsil-1837-park-si-un.jpg",
+      "mode": "copy",
+      "sha256": "f59f406859668e98594bd681ec85bbab347f984a1b0949838e678bee7ebf3634",
+      "bytes": 1054230,
+      "class": "public-source",
+      "source_url": "https://kostma.aks.ac.kr/inspection/insDirView.aspx?dataUCI=KCIS_U038%2BCBNHNKSMC%2BKSM-XD.1837.4575-20140430.ISPTS00003",
+      "metadata_stripped": true
+    },
+    {
+      "path": "research/hojok-samples/imsil-1837-park-si-un.txt",
+      "mode": "copy",
+      "sha256": "8a70caad7f4a1e7fa6abb2062fa5c54e17e4a6db853ab989eac1a3ea3f912d32",
+      "bytes": 613
+    },
+    {
+      "path": "research/hojok-samples/imsil-1846-park-gye-rim.jpg",
+      "mode": "copy",
+      "sha256": "a8244d463184e91deee0095d6f1a817598f3ebe63d1d1515fef5779a9855b93f",
+      "bytes": 1044861,
+      "class": "public-source",
+      "source_url": "https://kostma.aks.ac.kr/inspection/insDirView.aspx?dataUCI=KCIS_U038%2BCBNHNKSMC%2BKSM-XD.1846.4575-20140430.ISPTS00004",
+      "metadata_stripped": true
+    },
+    {
+      "path": "research/hojok-samples/imsil-1846-park-gye-rim.txt",
+      "mode": "copy",
+      "sha256": "d17a8be4dde8396c82661b472b09d87e1a1708e3d0a8bcc5d9767be8dd1d0ec8",
+      "bytes": 550
+    },
+    {
+      "path": "research/hojok-samples/jangsu-1891-yang-gyeong-won.jpg",
+      "mode": "copy",
+      "sha256": "98f72d6e1d9309fc5a77d491e18303e02ca598252d8cea3871ae13ef3c2bd329",
+      "bytes": 908154,
+      "class": "public-source",
+      "source_url": "https://kostma.aks.ac.kr/inspection/insDirView.aspx?dataUCI=KCIS_U038%2BCBNHNKSMC%2BKSM-XD.1891.4574-20090715.BUK14032",
+      "metadata_stripped": true
+    },
+    {
+      "path": "research/hojok-samples/jangsu-1891-yang-gyeong-won.txt",
+      "mode": "copy",
+      "sha256": "1fedd538a3f7f84d15721fd386941b5fad3af78f44d03bb2764e618623f7081f",
+      "bytes": 714
+    }
+  ]
+}
