@@ -3,7 +3,7 @@ and say why a date quote cannot be trusted as written."""
 import re
 
 DIGITS = str.maketrans('〇○零一二三四五六七八九','000123456789')
-YEAR = re.compile(r'(?<![0-9])([0-9]{4})年')
+YEAR = re.compile(r'(?<![0-9])([0-9]{3,4})年')
 ANY_YEAR = re.compile(r'(?<![0-9])([0-9]+)年')
 MONTH = re.compile(r'(閏)?(正|元|冬|臘|[0-9十廿]{1,3})月')
 DAY = re.compile(r'(初?[0-9十廿卅]{1,4})日')
@@ -34,12 +34,13 @@ def integer(s):
 
 
 def recorded_date(quote):
-    """Only a four-digit year is a year: a three-digit one is a dropped 一, not a date."""
+    """A three-digit year is kept as written (958 -> '0958'): some genealogies really
+    record years before 1000. check_date says whether it is more likely a dropped 一."""
     text=quote.translate(DIGITS)
     years=list(YEAR.finditer(text))
     if len(years)!=1:return None,None,None
     year=years[0]
-    date=year[1]
+    date=year[1].zfill(4)
     after=text[year.end():]
     month=MONTH.match(after)
     if not month:return date,'year',None
@@ -57,21 +58,34 @@ def check_date(quote):
     """Check one date statement as written. Returns (event, problems).
 
     event is 'birth' or 'death' from the statement's closing 生 or 卒, or None.
-    problems lists reasons to re-read the source before storing the date:
-      year-not-four-digits  a year of 1-3 or 5+ numerals (a dropped or extra stroke,
-                            or a date cut at a column or page break)
-      cycle-mismatch        a cycle-year label that is not the label of the year
-      no-event-marker       no closing 生 or 卒, so the fact type is a guess
-    A statement whose problems list is empty can still be wrong: a dropped 一 in
-    十一月 leaves a valid month. Only a column-length check sees that.
+    problems lists reasons to re-read the source before trusting the date:
+      dropped-leading-one     a three-digit year whose cycle-year label fits the year
+                              plus 1000, not the year itself: 戊戌九五八 is 1958 (戊戌),
+                              not 958 (戊午)
+      short-year-unconfirmed  a three-digit year with no cycle-year label to confirm it.
+                              Early ancestors can have such years, so this is a prompt
+                              to check the scan and the column, not a rejection
+      year-length             a year of one, two, or five or more numerals
+      cycle-mismatch          a cycle-year label that fits neither reading of the year
+      no-event-marker         no closing 生 or 卒, so the fact type is a guess
+    A statement with no problems can still be wrong: a dropped 一 in 十一月 leaves a
+    valid month. Only a column-length check sees that.
     """
     text = quote.translate(DIGITS)
     problems = []
     years = [m[1] for m in ANY_YEAR.finditer(text)]
-    if any(len(y) != 4 for y in years):
-        problems.append('year-not-four-digits')
-    full = [int(y) for y in years if len(y) == 4]
-    if full and any(p != ganji(full[0]) for p in ganji_pairs(quote)):
+    labels = ganji_pairs(quote)
+    if any(len(y) not in (3, 4) for y in years):
+        problems.append('year-length')
+    year = next((int(y) for y in years if len(y) in (3, 4)), None)
+    if year is not None and year < 1000:
+        if labels and all(p == ganji(year + 1000) for p in labels):
+            problems.append('dropped-leading-one')
+        elif not labels:
+            problems.append('short-year-unconfirmed')
+        elif any(p != ganji(year) for p in labels):
+            problems.append('cycle-mismatch')
+    elif year is not None and any(p != ganji(year) for p in labels):
         problems.append('cycle-mismatch')
     markers = [c for c in quote if c in EVENTS]
     if not markers:

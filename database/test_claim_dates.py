@@ -7,10 +7,9 @@ class DatePrecisionTests(unittest.TestCase):
         self.assertEqual(recorded_date('辛巳一九四一年六月二十日生'),('1941-06-20','day',False))
         self.assertEqual(recorded_date('庚申十二月初二日卒'),(None,None,None))
 
-    def test_three_digit_year_is_not_a_year(self):
-        # 九五八 is 1958 with its leading 一 lost; storing it as 0958 was the old defect.
-        self.assertEqual(recorded_date('九五八年二月三日生'),(None,None,None))
-        self.assertEqual(recorded_date('癸卯九○三年十月十四日生'),(None,None,None))
+    def test_three_digit_year_is_kept_as_written(self):
+        # Some genealogies record years before 1000; check_date decides whether to doubt one.
+        self.assertEqual(recorded_date('九五八年二月三日生'),('0958-02-03','day',False))
 
 
 class CheckDateTests(unittest.TestCase):
@@ -22,14 +21,22 @@ class CheckDateTests(unittest.TestCase):
         self.assertEqual(check_date('戊戌一九五八年十二月三日卒'), ('death', []))
 
     def test_dropped_one(self):
-        self.assertEqual(check_date('戊戌九五八年十二月三日卒'), ('death', ['year-not-four-digits']))
+        # 戊戌 is 1958's label; 958's is 戊午.
+        self.assertEqual(check_date('戊戌九五八年十二月三日卒'), ('death', ['dropped-leading-one']))
+
+    def test_genuine_early_year(self):
+        self.assertEqual(check_date('戊午九五八年生'), ('birth', []))
 
     def test_cut_at_a_page_break(self):
         # The run after the break: no leading 一, and the 卒 is in the next run.
-        self.assertEqual(check_date('九四六年七月二日'), (None, ['year-not-four-digits', 'no-event-marker']))
+        self.assertEqual(check_date('九四六年七月二日'), (None, ['short-year-unconfirmed', 'no-event-marker']))
 
     def test_cycle_mismatch(self):
         self.assertEqual(check_date('己巳一九○五年生'), ('birth', ['cycle-mismatch']))
+        self.assertEqual(check_date('甲子九五八年生'), ('birth', ['cycle-mismatch']))
+
+    def test_year_length(self):
+        self.assertEqual(check_date('五八年生'), ('birth', ['year-length']))
 
     def test_cycle_label_alone(self):
         self.assertEqual(check_date('乙丑生'), ('birth', []))

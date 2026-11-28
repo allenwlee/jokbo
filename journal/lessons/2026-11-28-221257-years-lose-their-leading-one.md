@@ -56,19 +56,22 @@ A database query for birth years turned up years starting with 0. Following each
 ## Root cause
 
 - The fact extraction worked on one layout run at a time. A date is one statement, but a column or page break cuts it into several runs.
-- The date reader accepted a three- or four-digit year and padded the short ones with a zero. A three-digit year can never be right in a book whose dates run from 1592 to the 1980s.
+- The date reader accepted a three-digit year and padded it with a zero, with no check. In this book, whose dates run from 1592 to the 1980s, every three-digit year was a reading error. In another genealogy, an early ancestor's year can really have three digits, so the reader must not simply reject them either.
 - A lone 一 is one thin stroke. The reader read it as a rule line or a speck and dropped it, as it had in index references and generation labels (see [small strokes](2026-11-27-131407-small-strokes-circles-and-digits-drop-out.md)).
 - The fact type came from the model's label, not from the 生 or 卒 that closes the date.
 - Nothing stopped a generation label from becoming an appearance.
 
 ## Fix
 
-- `database/claim_dates.py` now accepts only four-digit years. A three-digit year gives no date, so it is flagged instead of stored as 0958. A new `check_date` reports, for one date statement:
-  - `year-not-four-digits`;
-  - `cycle-mismatch` (a cycle-year label that is not the year's);
+- `database/claim_dates.py` still stores a three-digit year as written, because some genealogies really record years before 1000. A new `check_date` decides whether to doubt it, for one date statement:
+  - `dropped-leading-one`: the cycle-year label fits the year plus 1000, not the year itself. 戊戌 is the label of 1958; 958's label is 戊午. The 1000 years between them never share a label, so the label settles it.
+  - `short-year-unconfirmed`: a three-digit year with no label. Check the scan and the column length.
+  - `cycle-mismatch`: the label fits neither reading.
   - `no-event-marker`.
 
   It also returns `birth` or `death` from the closing 生 or 卒.
+
+  A first version of this fix rejected every three-digit year. That was wrong for other books, and was changed the same day.
 - `database/entry_columns.py` joins an entry's runs in reading order before dates are read. `date_statements` reads each date from the joined text, and `runs_for` maps it back to every run it covers. `short_columns` flags any column that is not the grid's length, except an entry's last.
 - `database/test_entry_columns.py` keeps four of the cases above as golden cases. Each holds the printed text, what the reader returned, and the correct dates. A change to the reader or the extraction should pass them first.
 
@@ -86,7 +89,7 @@ Use the book's own redundancy:
 
 Each of these is a free, model-independent check.
 
-A three-digit year is a reading error, not a date. Reject it at import rather than padding it.
+Do not reject a three-digit year, and do not trust one blindly. Some genealogies record early ancestors with years below 1000. Let the cycle-year label decide: it tells a dropped 一 from a real early year.
 
 Count what the checks cannot see. A dropped stroke that leaves a valid month passes every date check. Only the column count catches it.
 

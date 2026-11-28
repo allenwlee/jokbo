@@ -1,6 +1,6 @@
 {
-  "source_revision": "6556300521ccbd432f736036b82c0eb906a72230",
-  "exported_at": "2026-11-28T22:14:18+09:00",
+  "source_revision": "4a008a8772875bae4aebdbafe97db55158c112ab",
+  "exported_at": "2026-11-28T22:16:54+09:00",
   "manifest_sha256": "32c06f11daea8d8862fdd4873529401bd16756dc6f00a8ada4ab1c6c99dd1816",
   "stage": 1,
   "file_count": 56,
@@ -8,8 +8,8 @@
     {
       "path": "AGENTS.md",
       "mode": "edition",
-      "sha256": "6e754ccdd875b184bbc212192bba87ba40845e6bf10e270ad3417fdc87206ef9",
-      "bytes": 7716
+      "sha256": "12a31070221a7bc2d0fe8ca0e74fdedf1c284ed0e452aac9802580c1974faab2",
+      "bytes": 7813
     },
     {
       "path": "CONCEPTS.md",
@@ -38,8 +38,8 @@
     {
       "path": "database/claim_dates.py",
       "mode": "copy",
-      "sha256": "aaf510ab1b3c07782b863e52cc217850baa50974123cf4b1d57c4caf6e1ff2d1",
-      "bytes": 3190
+      "sha256": "cb7ec62a9419db1bad29e2b67a96a819ffba3251c7dad69982f0d1f744fa3e48",
+      "bytes": 4073
     },
     {
       "path": "database/entry_columns.py",
@@ -50,14 +50,14 @@
     {
       "path": "database/test_claim_dates.py",
       "mode": "copy",
-      "sha256": "964249afe934f0abe55fbd596697d1cdc4ce58c26e74b7475d752d1946608e62",
-      "bytes": 1957
+      "sha256": "548b74bd70b1c15fbab2eaf5120fdebe678e45c1790b8f5b9ec04a3672c0c167",
+      "bytes": 2251
     },
     {
       "path": "database/test_entry_columns.py",
       "mode": "copy",
-      "sha256": "b087d5eb7f09e6aa9394f5f59aaa6251e06264c5b7b200d99ee122c14a16f1a3",
-      "bytes": 3389
+      "sha256": "4233efb0783705ca81571d90b406ef4662da798446c9213f526889ad259cdedc",
+      "bytes": 3402
     },
     {
       "path": "docs/methods/book-config.md",
@@ -68,8 +68,8 @@
     {
       "path": "docs/methods/database-import.md",
       "mode": "edition",
-      "sha256": "0593324bf7892bbf9328b871e148bfb2374f544eeef0a1717d8645c4e7c16619",
-      "bytes": 9950
+      "sha256": "15c3de8eca9542bd085e679d6e9177b740fbc64fb10003d9ed41cd4ba2cdef67",
+      "bytes": 10383
     },
     {
       "path": "docs/methods/editorial-review.md",
@@ -278,8 +278,8 @@
     {
       "path": "journal/lessons/2026-11-28-221257-years-lose-their-leading-one.md",
       "mode": "edition",
-      "sha256": "dd562140c90c279a043c103a00609753301cd8e92df2ca62678850626cb40376",
-      "bytes": 6614
+      "sha256": "653d30d8dafb07434d00b4a3fbc64429be95d3171eb444697b377219383e8000",
+      "bytes": 7274
     },
     {
       "path": "research/hojok-samples/imsil-1792-park-seong-hyeop.jpg",

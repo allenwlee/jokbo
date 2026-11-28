@@ -40,10 +40,10 @@ class GridTests(unittest.TestCase):
 
 
 class JoinedDateTests(unittest.TestCase):
-    def test_reader_output_is_flagged_not_stored(self):
+    def test_reader_output_is_flagged(self):
         read = [r for column in P39_READ for r in column]
-        self.assertEqual(facts(read), [('birth', None, ['year-not-four-digits']),
-                                       ('death', None, ['year-not-four-digits'])])
+        self.assertEqual(facts(read), [('birth', '0903-10-14', ['dropped-leading-one']),
+                                       ('death', '0958-12-03', ['dropped-leading-one'])])
 
     def test_printed_text(self):
         self.assertEqual(facts(P39_PRINTED), [('birth', '1903-11-14', []), ('death', '1958-12-03', [])])
@@ -54,7 +54,7 @@ class JoinedDateTests(unittest.TestCase):
         self.assertEqual(facts(P45_RUNS), [('birth', '1804-05-18', []), ('death', '1829-01-19', [])])
 
     def test_one_run_at_a_time_loses_the_year(self):
-        self.assertEqual(facts(P70_RUNS[2:3]), [(None, None, ['year-not-four-digits', 'no-event-marker'])])
+        self.assertEqual(facts(P70_RUNS[2:3]), [(None, '0946-07-02', ['short-year-unconfirmed', 'no-event-marker'])])
 
     def test_fact_maps_back_to_every_run_it_covers(self):
         text, spans = join_runs(enumerate(P70_RUNS))

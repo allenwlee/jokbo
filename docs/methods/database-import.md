@@ -94,7 +94,7 @@ sqlite3 work/entries.sqlite "select relation_type, count(*) from passage_links g
 - Do not substitute a different layout revision: positions and review decisions are tied to one revision's hash.
 - Model-assisted stages that read page images and propose facts and relationships come after these steps. Record provider, model, prompt and cost for each, and import their output as `model_proposal`.
 - Relationship inference needs the chart geometry and source-backed review. On one Lee calibration page, 2 of 10 proposed parent choices were wrong.
-- Dates are recorded as written. `database/claim_dates.py` reads year, month and day precision from a literal Hanja date; it does not convert calendars. It accepts only four-digit years. A three-digit year is a reading problem, not a date in antiquity, so it gives no date.
+- Dates are recorded as written. `database/claim_dates.py` reads year, month and day precision from a literal Hanja date; it does not convert calendars. It keeps a three-digit year as written, because some genealogies record early ancestors with years below 1000. A three-digit year can also be a four-digit year that lost its leading 一, so it is checked, not trusted.
 
 ## Reading facts from an entry
 
@@ -102,8 +102,10 @@ The checks below come from [years lose their leading 一](../../journal/lessons/
 
 1. **Join the entry first.** Put the entry's layout runs together in reading order, across column, gutter and page breaks, with `entry_columns.join_runs`. Extract facts from the joined text and keep every run each fact covers (`entry_columns.runs_for`). A date that starts at the foot of one column often ends at the top of the next: 丙戌一 | 九四六年七月二日卒. Read one run at a time, its year becomes 946.
 2. **Check every date statement** with `entry_columns.date_statements`, which calls `claim_dates.check_date`. Re-read the scan for any statement it flags:
-   - `year-not-four-digits`;
-   - `cycle-mismatch`: the cycle-year label (戊戌, 癸卯…) is not the year's own;
+   - `dropped-leading-one`: a three-digit year whose cycle-year label fits the year plus 1000 (戊戌九五八 is 1958, because 958's label is 戊午);
+   - `short-year-unconfirmed`: a three-digit year with no label to confirm it. It may be genuine; check the scan and the column length;
+   - `cycle-mismatch`: the cycle-year label (戊戌, 癸卯…) fits neither reading of the year;
+   - `year-length`: a year of one, two, or five or more numerals;
    - `no-event-marker`.
 
    Take the fact type from the closing 生 (birth) or 卒 (death), not from a model's label.
