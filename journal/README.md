@@ -13,7 +13,7 @@ All times are Japan Standard Time (JST, UTC+9).
 - The [stage log](#stage-log) below is in date order. Each day links to the lessons that came out of it.
 - Each [lesson](lessons/) follows the same shape: Summary, Impact, How it was noticed, Root cause, Fix, Lesson, Evidence. This is a "blameless" format: it describes what the process allowed to happen, not who made the mistake.
 - [Costs and models](costs-and-models.md) lists every recorded model, provider, cost and timing, and every gap where nothing was recorded.
-- The [coverage table](#coverage-of-the-35-documented-mistakes) maps each of the 35 documented mistakes and challenges to its lesson.
+- The [coverage table](#coverage-of-the-36-documented-mistakes) maps each of the 36 documented mistakes and challenges to its lesson.
 
 The Evidence section of each lesson names the internal records it draws on, such as "the conversion work log" or "the run record for the grouping trial". Those records stay in the project's private repository, because they contain family data. The figures in this journal are copied from them.
 
@@ -98,7 +98,13 @@ No work is recorded for this day.
 
 On 27 November, planning for this public repository found several ways family data could leak, starting with the scans saved in the working repository's history. That stage has its own lesson: [publishing without leaking](lessons/2026-11-27-131423-publishing-without-leaking.md).
 
-## Coverage of the 35 documented mistakes
+### 28 November: auditing dates in the database
+
+- A query for birth years found nine fact records with three-digit years, such as 0958. Every one is a four-digit year in the book. The 一 was lost at a column, gutter or page break, or skipped by the reader in mid-column. The same audit found deaths stored as births and dates attached to generation labels.
+- Added the date checks, the column join and a golden set of the checked cases. The database records themselves were not yet corrected.
+- Lesson: [years lose their leading 一](lessons/2026-11-28-221257-years-lose-their-leading-one.md).
+
+## Coverage of the 36 documented mistakes
 
 Every mistake and challenge documented in the project's records maps to one lesson. Some lessons cover several items that share a cause.
 
@@ -139,6 +145,7 @@ Every mistake and challenge documented in the project's records maps to one less
 | 33 | The video pipeline was hard-wired to `/tmp` paths and copy-pasted retry scripts | [Video pipeline paths](lessons/2026-11-27-131421-video-pipeline-hard-coded-paths.md) |
 | 34 | Checks against the physical book settled scan ambiguities that no model could | [The physical book](lessons/2026-11-27-131422-the-physical-book-settles-what-scans-cannot.md) |
 | 35 | A 14-hour, 60-opening session had no instrumented time breakdown | [What was never recorded](lessons/2026-11-27-131418-what-was-never-recorded.md) |
+| 36 | Nine dates had three-digit years: the 一 was lost at column and page breaks or skipped by the reader; some were also stored as births or on the wrong appearance | [Leading 一](lessons/2026-11-28-221257-years-lose-their-leading-one.md) |
 | — | Publishing stage: leak risks found while planning this repository | [Publishing without leaking](lessons/2026-11-27-131423-publishing-without-leaking.md) |
 
 ## All lessons
@@ -166,3 +173,4 @@ Every mistake and challenge documented in the project's records maps to one less
 21. [The video pipeline was tied to one machine](lessons/2026-11-27-131421-video-pipeline-hard-coded-paths.md) (item 33)
 22. [The physical book settled what no scan or model could](lessons/2026-11-27-131422-the-physical-book-settles-what-scans-cannot.md) (item 34)
 23. [Publishing the methods without publishing the family](lessons/2026-11-27-131423-publishing-without-leaking.md) (publishing stage)
+24. [Years lose their leading 一](lessons/2026-11-28-221257-years-lose-their-leading-one.md) (item 36)

@@ -106,5 +106,6 @@ Stop and ask the person you are working for when:
 
 - Do not treat text extracted from a rendered PDF as the transcription. Use the layout.
 - Do not merge two person appearances because their names match.
+- Do not extract a date from a single layout run. Join the entry's runs in reading order first; a date often crosses a column or page break. Reject any year that is not four digits rather than storing it.
 - Do not convert calendars or normalize variant characters in the transcription. Keep the print; put interpretations in separate fields.
 - Do not delete raw model responses, even wrong ones.

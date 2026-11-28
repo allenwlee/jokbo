@@ -94,4 +94,24 @@ sqlite3 work/entries.sqlite "select relation_type, count(*) from passage_links g
 - Do not substitute a different layout revision: positions and review decisions are tied to one revision's hash.
 - Model-assisted stages that read page images and propose facts and relationships come after these steps. Record provider, model, prompt and cost for each, and import their output as `model_proposal`.
 - Relationship inference needs the chart geometry and source-backed review. On one Lee calibration page, 2 of 10 proposed parent choices were wrong.
-- Dates are recorded as written. `database/claim_dates.py` reads year, month and day precision from a literal Hanja date; it does not convert calendars. A model can drop a leading digit or stroke from a year, so a three-digit year is a reading problem, not a date in antiquity.
+- Dates are recorded as written. `database/claim_dates.py` reads year, month and day precision from a literal Hanja date; it does not convert calendars. It accepts only four-digit years. A three-digit year is a reading problem, not a date in antiquity, so it gives no date.
+
+## Reading facts from an entry
+
+The checks below come from [years lose their leading 一](../../journal/lessons/2026-11-28-221257-years-lose-their-leading-one.md). In the Lee book they found nine wrong dates, all of which had passed import.
+
+1. **Join the entry first.** Put the entry's layout runs together in reading order, across column, gutter and page breaks, with `entry_columns.join_runs`. Extract facts from the joined text and keep every run each fact covers (`entry_columns.runs_for`). A date that starts at the foot of one column often ends at the top of the next: 丙戌一 | 九四六年七月二日卒. Read one run at a time, its year becomes 946.
+2. **Check every date statement** with `entry_columns.date_statements`, which calls `claim_dates.check_date`. Re-read the scan for any statement it flags:
+   - `year-not-four-digits`;
+   - `cycle-mismatch`: the cycle-year label (戊戌, 癸卯…) is not the year's own;
+   - `no-event-marker`.
+
+   Take the fact type from the closing 生 (birth) or 卒 (death), not from a model's label.
+3. **Count characters per column.** Entry text is set on a fixed grid. In the Lee book a full column held eight characters on the chart pages checked, and nine on some others. `entry_columns.short_columns` flags any column but an entry's last whose length differs from the grid. This is the only check that sees a dropped 一 inside a month or day: 十一月 read as 十月 is still a valid month.
+4. **Tie facts to entries, not to labels.** A generation label such as 二十四世 heads a chart row; it is not a person. Facts after the spouse marker 配 belong to the spouse, and those before it to the entry's subject.
+5. **Keep a golden set.** `database/test_entry_columns.py` holds printed text from hard cases: what the reader returned and the correct dates. Add your own book's hard cases there, and run the set after any change to reading or extraction.
+
+```sh
+python -B -m unittest discover -s database -p 'test_claim_dates.py' -v
+python -B -m unittest discover -s database -p 'test_entry_columns.py' -v
+```
